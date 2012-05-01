@@ -1,0 +1,26 @@
+{
+  "author": "Jake Luer <jake@alogicalparadox.com>",
+  "name": "gryn",
+  "description": "Use a procfile.",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/logicalparadox/gryn.git"
+  },
+  "main": "./index",
+  "scripts": {
+    "test": "make test"
+  },
+  "dependencies": {
+    "optimist": "0.3.x",
+    "drip": "0.2.x"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
