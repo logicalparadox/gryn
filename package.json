@@ -17,7 +17,9 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "chai": "*"
+    "chai": "*",
+    "chai-http": "*",
+    "superagent": "0.4.x"
   },
   "optionalDependencies": {},
   "engines": {
