@@ -1,2 +1,5 @@
 web: PORT=5000 node app.js
-worker: QUEUE=default node queue.js
+worker.1: QUEUE=one node queue.js
+worker.2: QUEUE=two node queue.js
+worker.3: QUEUE=three node queue.js
+worker.4: QUEUE=four node queue.js
