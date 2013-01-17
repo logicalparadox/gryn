@@ -1,4 +1,15 @@
 
+0.2.0 / 2013-01-17 
+==================
+
+  * Merge branch 'refactor/everything'
+  * example: basic has more than 2 entries
+  * test: parseProc is now exposed
+  * deps: include electron
+  * bin: update to use electron cli
+  * lib: refactor cli to electron
+  * lib: remove unneeded files
+
 0.1.1 / 2012-05-01 
 ==================
 
