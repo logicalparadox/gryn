@@ -23,7 +23,7 @@
       "test": "make test"
     }
   , "dependencies": {
-        "electron": "0.3.x"
+        "electron": "0.4.x"
       , "fsagent": "0.3.x" 
       , "flynn": "0.2.x"
     }
