@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/logicalparadox/gryn.png)](http://travis-ci.org/logicalparadox/gryn)
 # Gryn
 
 > Procfile based process runner.
