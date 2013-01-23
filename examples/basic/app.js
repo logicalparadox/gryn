@@ -8,4 +8,4 @@ var app = http.createServer(function (req, res) {
   res.end();
 }).listen(port);
 
-console.log('Server started on port %d', app.address().port);
+console.log('[%s] server started on port %d', process.env.NODE_ENV, app.address().port);
