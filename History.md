@@ -1,4 +1,13 @@
 
+0.3.0 / 2013-03-05 
+==================
+
+  * cli: allow for deamonization
+  * examples: [basic] tweak logging
+  * pgk: update deps
+  * cli: [ls] add ls command to list processes
+  * gryn: [parse] make sync
+
 0.2.2 / 2013-01-23 
 ==================
 

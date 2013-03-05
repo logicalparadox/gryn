@@ -1,6 +1,6 @@
 {
     "name": "gryn"
-  , "version": "0.2.2"
+  , "version": "0.3.0"
   , "description": "Procfile based process management."
   , "author": "Jake Luer <jake@alogicalpardox.com> (http://alogicalparadox.com)"
   , "license": "MIT"
