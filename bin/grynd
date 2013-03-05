@@ -1,0 +1,95 @@
+#!/usr/bin/env node
+// vim: set ft=javascript:
+
+/*!
+ * Module dependencies
+ */
+
+var electron = require('electron')
+  , flynn = require('flynn')
+  , fs = require('fsagent')
+  , gryn = require('..')
+  , path = require('path');
+
+/*!
+ * Required variables
+ */
+
+var argv = electron.argv()
+  , env = argv.param('e', 'env') || process.env.NODE_ENV || 'development'
+  , procfile = argv.param('f', 'file')
+  , basedir = path.join(path.dirname(procfile), '.gryn');
+
+/*!
+ * Process storage
+ */
+
+var monitors = []
+  , logFile;
+
+/*!
+ * Listen for shutdown commands
+ */
+
+// graceful shutdown
+process.on('SIGINT', function () {
+  var count = monitors.length;
+
+  function done () {
+    if (count) return;
+    logFile.end();
+    process.exit();
+  }
+
+  monitors.forEach(function (en) {
+    console.log('sigint', en.spec.name);
+    en.monitor.stop('SIGINT', function () {
+      count--;
+      done();
+    });
+  });
+});
+
+// forceful shutdown
+process.on('SIGHUP', function () {
+  monitors.forEach(function (en) {
+    en.monitor.stop('SIGHUP', null);
+  });
+
+  process.exit();
+});
+
+fs.mkdirp(basedir, function (err) {
+  if (err) throw err;
+  logFile = fs.createWriteStream(path.join(basedir, 'grynd.log'), { flags: 'w', encoding: 'utf8' });
+  gryn.read(procfile, function (err, procs) {
+    if (err) throw err;
+    procs.forEach(start);
+    fs.writeFile(path.join(basedir, 'grynd.pid'), process.pid);
+  });
+});
+
+function start (proc) {
+  var mon = flynn();
+
+  mon
+  .set('args', proc.args)
+  .set('cmd', proc.cmd)
+  .set('env', proc.env)
+  .set('node env', env);
+
+  function writeLog (chunk) {
+    chunk.toString().split('\n').forEach(function (d) {
+      if (d.trim().length) {
+        console.log(proc.name, d);
+        logFile.write(proc.name + ': ' + d + '\n');
+      }
+    });
+  }
+
+  mon.on('stdout:data', writeLog);
+  mon.on('stderr:data', writeLog);
+  mon.start();
+
+  monitors.push({ spec: proc, monitor: mon });
+}
