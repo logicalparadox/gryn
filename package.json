@@ -16,7 +16,7 @@
       "node": ">= 0.8.0"
     }
   , "bin": {
-      "gryn": "./bin/gryn"
+        "gryn": "./bin/gryn"
     }
   , "main": "./index"
   , "scripts": {
@@ -24,7 +24,7 @@
     }
   , "dependencies": {
         "electron": "0.4.x"
-      , "fsagent": "0.3.x" 
+      , "fsagent": "0.4.x" 
       , "flynn": "0.2.x"
     }
   , "devDependencies": {
