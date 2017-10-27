@@ -12,7 +12,7 @@ Gryn is available on [npm](http://npmjs.org) and recommended installation is cur
 
 ## Tests
 
-Tests are written in the BDD styles for the [Mocha](http://visionmedia.github.com/mocha) test runner using the
+Tests are written in the BDD styles for the [Mocha](https://mochajs.org/) test runner using the
 `should` assertion interface from [Chai](http://chaijs.com). Running tests is simple:
 
     make test
